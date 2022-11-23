@@ -35,8 +35,20 @@ const userSchema = mongoose.Schema(
       default: "inactive",
       enum: ["active", "inactive", "blocked"],
     },
+
+    verificationToken: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+
+    tokenExpire: String,
   },
   {
     timestamps: true,
   }
 );
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

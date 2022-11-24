@@ -39,7 +39,6 @@ const userSchema = mongoose.Schema(
     verificationToken: {
       type: String,
       unique: true,
-      required: true,
     },
 
     tokenExpire: String,

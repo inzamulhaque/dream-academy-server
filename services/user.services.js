@@ -8,3 +8,14 @@ exports.createNewUserServices = async (data, randomToken, tokenExpire) => {
   });
   return result;
 };
+
+exports.getUserByTokenServices = async (token) => {
+  return await User.findOne({ verificationToken: token });
+};
+
+exports.activedUserServices = async (id) => {
+  return await User.findByIdAndUpdate(
+    { _id: id },
+    { status: "active", verificationToken: null }
+  );
+};

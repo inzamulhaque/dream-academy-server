@@ -1,10 +1,12 @@
 const express = require("express");
-const { createNewUser } = require("../controllers/user");
+const { createNewUser, verifyUser } = require("../controllers/user");
 const router = express.Router();
 
 router
   .route("/")
   .get((req, res) => res.send("OK"))
   .post(createNewUser);
+
+router.route("/verify/:token").get(verifyUser);
 
 module.exports = router;

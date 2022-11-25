@@ -14,12 +14,34 @@ exports.getUserByTokenServices = async (token) => {
 };
 
 exports.activedUserServices = async (id) => {
-  return await User.findByIdAndUpdate(
-    { _id: id },
-    { status: "active", verificationToken: null }
-  );
+  return await User.findByIdAndUpdate({ _id: id }, { status: "active" });
 };
 
 exports.findUserByEmailServices = async (email) => {
-  return User.findOne({ email });
+  return await User.findOne({ email });
+};
+
+exports.forgotPasswordServices = async (
+  id,
+  forgotPasswordToken,
+  forgotPasswordTokenExpire
+) => {
+  return await User.findByIdAndUpdate(
+    { _id: id },
+    { forgotPasswordToken, forgotPasswordTokenExpire }
+  );
+};
+
+exports.getUserByResetPasswordTokenServices = async (token) => {
+  return await User.findOne({ forgotPasswordToken: token });
+};
+
+exports.resetPasswordServices = async (id, password) => {
+  return await User.findByIdAndUpdate(
+    { _id: id },
+    {
+      password,
+      status: "active",
+    }
+  );
 };

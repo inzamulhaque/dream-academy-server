@@ -19,3 +19,7 @@ exports.activedUserServices = async (id) => {
     { status: "active", verificationToken: null }
   );
 };
+
+exports.findUserByEmailServices = async (email) => {
+  return User.findOne({ email });
+};

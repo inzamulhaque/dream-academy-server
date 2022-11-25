@@ -1,11 +1,8 @@
 const express = require("express");
-const { createNewUser, verifyUser } = require("../controllers/user");
+const { createNewUser, verifyUser, signIn } = require("../controllers/user");
 const router = express.Router();
 
-router
-  .route("/")
-  .get((req, res) => res.send("OK"))
-  .post(createNewUser);
+router.post("/signup", createNewUser).post("/signin", signIn);
 
 router.route("/verify/:token").get(verifyUser);
 

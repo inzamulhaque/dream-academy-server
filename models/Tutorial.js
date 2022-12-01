@@ -32,6 +32,7 @@ const tutorialSchema = mongoose.Schema(
 
       id: {
         type: ObjectId,
+        required: [true, "please proved tutor id"],
         ref: "User",
       },
     },

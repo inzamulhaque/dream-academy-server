@@ -11,12 +11,14 @@ const user = require("./routes/user");
 const tutorial = require("./routes/tutorial");
 const blog = require("./routes/blog");
 const course = require("./routes/course");
+const payment = require("./routes/payment");
 
 // routes
 app.use("/api/v1/user", user);
 app.use("/api/v1/tutorial", tutorial);
 app.use("/api/v1/blog", blog);
 app.use("/api/v1/course", course);
+app.use("/api/v1/payment", payment);
 
 app.get("/", (req, res) => {
   res.send("Route is working! YaY!");

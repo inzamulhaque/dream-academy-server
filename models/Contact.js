@@ -25,6 +25,12 @@ const contactSchema = mongoose.Schema(
       type: String,
       required: [true, "please proved message"],
     },
+
+    status: {
+      type: String,
+      default: "unread",
+      enum: ["unread", "read"],
+    },
   },
   {
     timestamps: true,

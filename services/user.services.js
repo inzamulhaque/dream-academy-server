@@ -1,5 +1,12 @@
 const User = require("../models/User");
 
+exports.getAllUserServices = async (pageNum, usersNum) => {
+  return await User.find({})
+    .sort("-password")
+    .skip(pageNum * usersNum)
+    .limit(usersNum);
+};
+
 exports.createNewUserServices = async (data, randomToken, tokenExpire) => {
   const result = await User.create({
     ...data,
@@ -44,4 +51,15 @@ exports.resetPasswordServices = async (id, password) => {
       status: "active",
     }
   );
+};
+
+exports.updateUserRoleServices = async (id, role) => {
+  await User.findByIdAndUpdate(
+    { _id: id },
+    { role },
+    {
+      runValidators: true,
+    }
+  );
+  return await User.findById(id);
 };

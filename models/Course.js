@@ -2,22 +2,16 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 const validator = require("validator");
 
-const tutorialSchema = mongoose.Schema(
+const courseSchema = mongoose.Schema(
   {
     title: {
       type: String,
       trim: true,
-      required: [true, "please proved tutorial title"],
+      required: [true, "please proved course title"],
+      unique: [true, "please proved unique course title"],
     },
 
-    url: {
-      type: String,
-      validate: [validator.isURL, "Provide video url"],
-      required: [true, "video url required"],
-      unique: [true, "This video url exist"],
-    },
-
-    addedBy: {
+    createdBy: {
       name: {
         type: String,
         trim: true,
@@ -37,19 +31,6 @@ const tutorialSchema = mongoose.Schema(
       },
     },
 
-    course: {
-      title: {
-        type: String,
-        trim: true,
-        required: [true, "please proved course name"],
-      },
-
-      id: {
-        type: ObjectId,
-        ref: "Course",
-      },
-    },
-
     status: {
       type: String,
       default: "free",
@@ -60,12 +41,23 @@ const tutorialSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+
+    tutorials: [
+      {
+        title: String,
+
+        id: {
+          type: ObjectId,
+          ref: "Tutorial",
+        },
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
-const Tutorial = mongoose.model("Tutorial", tutorialSchema);
+const Course = mongoose.model("Course", courseSchema);
 
-module.exports = Tutorial;
+module.exports = Course;

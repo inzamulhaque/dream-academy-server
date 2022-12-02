@@ -10,11 +10,13 @@ app.use(cors());
 const user = require("./routes/user");
 const tutorial = require("./routes/tutorial");
 const blog = require("./routes/blog");
+const course = require("./routes/course");
 
 // routes
 app.use("/api/v1/user", user);
 app.use("/api/v1/tutorial", tutorial);
 app.use("/api/v1/blog", blog);
+app.use("/api/v1/course", course);
 
 app.get("/", (req, res) => {
   res.send("Route is working! YaY!");

@@ -9,8 +9,28 @@ const {
   forgotPasswordServices,
   getUserByResetPasswordTokenServices,
   resetPasswordServices,
+  getAllUserServices,
+  updateUserRoleServices,
 } = require("../services/user.services");
 const generateToken = require("../utils/generateToken");
+
+exports.getAllUser = async (req, res) => {
+  try {
+    const pageNum = parseInt(req.query.pageNum);
+    const usersNum = parseInt(req.query.usersNum);
+
+    const result = await getAllUserServices(pageNum, usersNum);
+
+    if (!result) {
+      return res.status(500).json({ success: false, error: "user not found" });
+    }
+
+    res.status(200).json({ success: true, result });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: "user not found" });
+  }
+};
 
 exports.createNewUser = async (req, res) => {
   try {
@@ -264,5 +284,22 @@ exports.resetPassword = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error: "token not valid" });
+  }
+};
+
+exports.updateUserRole = async (req, res) => {
+  try {
+    const { role } = req.body;
+    const { id } = req.query;
+    const result = await updateUserRoleServices(id, role);
+
+    if (!result) {
+      return res.status(500).json({ success: false, error: "user not found" });
+    }
+
+    res.status(200).json({ success: true, result });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: "user not found" });
   }
 };

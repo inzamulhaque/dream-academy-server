@@ -1,4 +1,7 @@
-const { addBlogServices } = require("../services/blog.services");
+const {
+  addBlogServices,
+  getAllBlogServices,
+} = require("../services/blog.services");
 const { findUserByEmailServices } = require("../services/user.services");
 
 exports.addBlog = async (req, res) => {
@@ -23,5 +26,23 @@ exports.addBlog = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error: "blog not added" });
+  }
+};
+
+exports.getAllBlog = async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit);
+    const page = parseInt(req.query.page);
+
+    const result = await getAllBlogServices(limit, page);
+
+    if (!result) {
+      return res.status(500).json({ success: false, error: "blog not found" });
+    }
+
+    res.status(200).json({ success: true, result });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: "blog not found" });
   }
 };

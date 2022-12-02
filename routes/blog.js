@@ -7,6 +7,7 @@ const router = express.Router();
 
 router
   .route("/")
+  .get()
   .post(
     verifyToken,
     (req, res, next) => auth(req, res, next, "mentor", "admin"),

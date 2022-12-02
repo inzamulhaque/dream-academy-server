@@ -10,3 +10,9 @@ exports.addBlogServices = async (data, image, user) => {
     "createBy.id": user._id,
   });
 };
+
+exports.getAllBlogServices = async (limit, page) => {
+  return await Blog.find({})
+    .skip(page * limit)
+    .limit(limit);
+};

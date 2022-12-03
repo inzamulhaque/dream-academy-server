@@ -39,14 +39,12 @@ const userSchema = mongoose.Schema(
 
     verificationToken: {
       type: String,
-      unique: true,
     },
 
     tokenExpire: String,
 
     forgotPasswordToken: {
       type: String,
-      unique: true,
     },
 
     forgotPasswordTokenExpire: String,

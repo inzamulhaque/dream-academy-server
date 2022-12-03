@@ -67,7 +67,7 @@ exports.createNewUser = async (req, res) => {
       from: process.env.EMAIL, // sender address
       to: result.email, // list of receivers
       subject: "Verification Mail", // Subject line
-      html: `<h1>Please verify your account <a href="http://localhost:7000/api/v1/user/verify/${randomToken}">Click</a></h1>`, // html body
+      html: `<h1>Please verify your account <a href="https://dream-acadeny-server.onrender.com/api/v1/user/verify/${randomToken}">Click</a></h1>`, // html body
     });
 
     const { name, email, role, status } = result || {};
@@ -219,7 +219,7 @@ exports.forgotPassword = async (req, res) => {
       from: process.env.EMAIL, // sender address
       to: result.email, // list of receivers
       subject: "Reset Password", // Subject line
-      html: `<h1>Reset your password <a href="http://localhost:7000/api/v1/user/resetpass/${randomToken}">Click</a></h1>`, // html body
+      html: `<h1>Reset your password <a href="https://dream-acadeny-server.onrender.com/api/v1/user/resetpass/${randomToken}">Click</a></h1>`, // html body
     });
 
     if (!info) {

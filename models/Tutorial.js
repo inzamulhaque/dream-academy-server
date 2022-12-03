@@ -49,17 +49,6 @@ const tutorialSchema = mongoose.Schema(
         ref: "Course",
       },
     },
-
-    status: {
-      type: String,
-      default: "free",
-      enum: ["free", "premium"],
-    },
-
-    price: {
-      type: Number,
-      default: 0,
-    },
   },
   {
     timestamps: true,

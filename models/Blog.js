@@ -20,6 +20,11 @@ const blogSchema = mongoose.Schema(
       required: [true, "please proved blog description"],
     },
 
+    cat: {
+      type: String,
+      required: [true, "please proved blog cat"],
+    },
+
     createBy: {
       name: {
         type: String,

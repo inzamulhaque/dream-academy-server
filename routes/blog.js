@@ -2,12 +2,12 @@ const express = require("express");
 const auth = require("../middleware/auth");
 const verifyToken = require("../middleware/verifyToken");
 const uploader = require("../middleware/uploader");
-const { addBlog } = require("../controllers/blog");
+const { addBlog, getAllBlog } = require("../controllers/blog");
 const router = express.Router();
 
 router
   .route("/")
-  .get()
+  .get(getAllBlog)
   .post(
     verifyToken,
     (req, res, next) => auth(req, res, next, "mentor", "admin"),

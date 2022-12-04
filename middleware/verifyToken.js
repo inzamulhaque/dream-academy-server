@@ -20,7 +20,7 @@ const verifyToken = async (req, res, next) => {
     console.log(error);
     res.status(403).json({
       success: false,
-      error: "Invalid token",
+      error: error,
     });
   }
 };

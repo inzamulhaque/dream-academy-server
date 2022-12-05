@@ -2,9 +2,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const image = path.join(__dirname, "./blogImage");
-
-app.use(express.static(image));
 
 //middlewares
 app.use(express.json());
@@ -17,6 +14,7 @@ const blog = require("./routes/blog");
 const course = require("./routes/course");
 const payment = require("./routes/payment");
 const contact = require("./routes/contact");
+const image = require("./routes/image");
 
 // routes
 app.use("/api/v1/user", user);
@@ -25,6 +23,7 @@ app.use("/api/v1/blog", blog);
 app.use("/api/v1/course", course);
 app.use("/api/v1/payment", payment);
 app.use("/api/v1/contact", contact);
+app.use("/api/v1/image", image);
 
 app.get("/", (req, res) => {
   res.send("Route is working! YaY!");

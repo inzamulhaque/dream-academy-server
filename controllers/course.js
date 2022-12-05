@@ -35,7 +35,7 @@ exports.getAllCourse = async (req, res) => {
     const limit = parseInt(req.query.limit);
     const page = parseInt(req.query.page);
 
-    const resilt = await getAllCourseService(limit, page);
+    const result = await getAllCourseService(limit, page);
 
     if (!result) {
       return res

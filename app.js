@@ -14,6 +14,7 @@ const blog = require("./routes/blog");
 const course = require("./routes/course");
 const payment = require("./routes/payment");
 const contact = require("./routes/contact");
+const testimonial = require("./routes/testimonial");
 const image = require("./routes/image");
 
 // routes
@@ -23,6 +24,7 @@ app.use("/api/v1/blog", blog);
 app.use("/api/v1/course", course);
 app.use("/api/v1/payment", payment);
 app.use("/api/v1/contact", contact);
+app.use("/api/v1/testimonial", testimonial);
 app.use("/api/v1/image", image);
 
 app.get("/", (req, res) => {
